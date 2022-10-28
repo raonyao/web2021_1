@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test2.db');
 
 let sql = `
-delete from item;
+insert into monster ("monstername") values ("ドスジャギィ");
 `
 
 db.serialize( () => {
@@ -11,6 +11,6 @@ db.serialize( () => {
 			console.log('Error: ', error );
 			return;
 		}
-		console.log( "データを削除しました" );
+		console.log( "データを追加しました" );
 	});
 });

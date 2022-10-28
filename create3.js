@@ -5,6 +5,7 @@ let schema = `
 create table item(
   id integer primary key,
   itemname text,
+  dropratio text,
   monster_id integer
 );
 `
