@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test2.db');
 
 let sql = `
-select id, itemname,dropratio,monster_id from item;
+select id, name,dropratio,monster_id from stripping;
 `
 
 db.serialize( () => {
@@ -12,7 +12,7 @@ db.serialize( () => {
 			return;
 		}
 		for( let data of row ) {
-			console.log( data.id + ' : ' + data.itemname + ' : ' + data.dropratio + ' : ' + data.monster_id);
+			console.log( data.id + ' : ' + data.name + ' : ' + data.dropratio + ' : ' + data.monster_id);
 		}
 	});
 });

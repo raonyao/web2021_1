@@ -2,11 +2,11 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test2.db');
 
 let sqls = [
-  `insert into item ("itemname","dropratio","monster_id") values ("眠狗竜の上皮","22%","2");`,
-  `insert into item ("itemname","dropratio","monster_id") values ("眠狗竜の尖爪","37%","2");`,
-  `insert into item ("itemname","dropratio","monster_id") values ("昏睡袋","31%","2");`,
-  `insert into item ("itemname","dropratio","monster_id") values ("眠狗竜の皮","5%","2");`,
-  `insert into item ("itemname","dropratio","monster_id") values ("眠狗竜の爪","5%","2");`,
+  `insert into stripping ("name","dropratio","monster_id") values ("毒狗竜の上皮","40%","2");`,
+  `insert into stripping ("name","dropratio","monster_id") values ("毒狗竜の堅腕甲","20%","2");`,
+  `insert into stripping ("name","dropratio","monster_id") values ("猛毒袋","25%","2");`,
+  `insert into stripping ("name","dropratio","monster_id") values ("毒狗竜の皮","8%","2");`,
+  `insert into stripping ("name","dropratio","monster_id") values ("毒狗竜の堅腕","7%","2");`,
   ]
 for(let sql of sqls){
   db.serialize( () => {

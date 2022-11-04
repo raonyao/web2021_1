@@ -2,9 +2,11 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test2.db');
 
 let schema = `
-create table monster(
+create table capture(
   id integer primary key,
-  name text
+  name text,
+  dropratio text,
+  monster_id integer
 );
 `
 
