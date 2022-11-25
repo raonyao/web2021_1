@@ -58,15 +58,31 @@ app.get("/monster/:id", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, name from monster;";
+    let sql = "select stripping.name as strippingname, dropratio from monster inner join stripping on stripping.monster_id=monster.id where monster.id=" + req.params.id + ";";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
                 res.render('MH', {mes:"エラーです"});
             }
-            //console.log(data);    // ③
-            res.render('select', {data:data});
+            console.log(data);    // ③
+            res.render('select2', {data:data});
+        })
+    })
+})
+app.get("/monster/:id", (req, res) => {
+    //console.log(req.query.pop);    // ①
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+    let sql = "select lostitem.name as lostitemname, dropratio from monster inner join lostitem on lostitem.monster_id=monster.id where monster.id=" + req.params.id + ";";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('MH', {mes:"エラーです"});
+            }
+            console.log(data);    // ③
+            res.render('select2', {data:data});
         })
     })
 })
