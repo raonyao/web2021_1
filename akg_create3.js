@@ -1,10 +1,10 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
-/*アルバムテーブル（ID、アルバム名、発売日（リリース日）、曲数）*/
+/*シングルーブル（ID、シングル名、発売日（リリース日）、曲数）*/
 
 let schema = `
-create table album(
+create table single(
   id integer primary key,
   name text,
   releaseday text,
