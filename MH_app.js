@@ -11,33 +11,6 @@ app.get("/", (req, res) => {
   const message = "";
   res.render('MH', {mes:message});
 });
-
-app.get("/db", (req, res) => {
-    db.serialize( () => {
-        db.all("select id, 都道府県, 人口 from example;", (error, row) => {
-            if( error ) {
-                res.render('MH', {mes:"エラーです"});
-            }
-            res.render('select', {data:row});
-        })
-    })
-})
-app.get("/top", (req, res) => {
-    //console.log(req.query.pop);    // ①
-    let desc = "";
-    if( req.query.desc ) desc = " desc";
-    let sql = "select id, 都道府県, 人口 from example order by 人口" + desc + " limit " + req.query.pop + ";";
-    //console.log(sql);    // ②
-    db.serialize( () => {
-        db.all(sql, (error, data) => {
-            if( error ) {
-                res.render('show', {mes:"エラーです"});
-            }
-            //console.log(data);    // ③
-            res.render('select', {data:data});
-        })
-    })
-})
 app.get("/monster", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
