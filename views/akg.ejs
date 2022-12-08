@@ -6,10 +6,18 @@
 <title>HOME</title>
 
 <style type="text/css">
+.bigbox{
+width: 100%;
+}
+.title{
+  color: #000000;
+  text-align:center;
+}
+  
 ul.ddmenu {
    margin: 0px;               
    padding: 0px 0px 0px 15px; 
-   background-color: #000000;
+   background-color: #FFFFFF;
 	text-align: center;
 }
 ul.ddmenu li {
@@ -19,19 +27,13 @@ list-style-type: none; /* ★2:リストの先頭記号を消す */
 position: relative; /* ★3:サブメニュー表示の基準位置にする */
 }
 ul.ddmenu a {
-background-color: #000000; /* メニュー項目の背景色 */
-color: white; /* メニュー項目の文字色(白色) */
+background-color: #FFFFFF; /* メニュー項目の背景色 */
+color: #000000; /* メニュー項目の文字色(白色) */
 line-height: 40px; /* メニュー項目のリンクの高さ(40px) */
 text-align: center; /* メインメニューの文字列の配置(中央寄せ) */
 text-decoration: none; /* メニュー項目の装飾(下線を消す) */
 font-weight: bold; /* 太字にする */
 display: block; /* ★4:項目内全域をリンク可能にする */
-}
-ul.ddmenu ul {
-display: none; /* ★1:標準では非表示にする */
-margin: 0px; /* ★2:サブメニュー外側の余白(ゼロ) */
-padding: 0px; /* ★3:サブメニュー内側の余白(ゼロ) */
-position: absolute; /* ★4:絶対配置にする */
 }
 ul.ddmenu a:hover {
 background-color: #E0602D; /* メニュー項目にマウスが載ったときの背景色 */
@@ -47,21 +49,16 @@ display: block; /* ★5:マウスポインタが載っている項目の内部�
 <!-- 実際には#にURLを記述 -->
 
 <body>
+<div class="bigbox">
+  <div class="title">
+    <h1>ASIAN KUNG-FU GENERATION</h1>
+  </div>
 	<ul class="ddmenu">
    		<li><a href="#">HOME</a></li>
-   		<li><a href="#">MENU</a>
-    		<ul>
-        		 <li><a href="#">FOOD</a></li>
-        		 <li><a href="#">DRINK</a></li>
-    		</ul>
-   		</li>
-   		<li><a href="#">あいさつ</a>
-	   
-  		 </li>
-	
-		 <li><a href="#">アクセス</a>
-			 
-	     </li>
+   		<li><a href="#">アルバム</a></li>
+   		<li><a href="#">シングル</a></li>
+	    <li><a href="#">タイアップ</a></li>
+      <li><a href="#">メンバー</a></li>
 	</ul>
 </div>
 </body>
