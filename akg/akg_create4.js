@@ -6,8 +6,7 @@ const db = new sqlite3.Database('test4.db');
 let schema = `
 create table offer(
   id integer primary key,
-  name text,
-  songtitle text
+  name text
 );
 `
 
