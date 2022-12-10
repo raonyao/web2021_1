@@ -1,6 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
+/*タイアップデータの挿入*/
+
 let sqls = [
   `insert into offer ("name") values ("テレビ東京系アニメ『NARUTO-ナルト-』のオープニングテーマ　2003年から第2期(第26話~第35話)");`,
 

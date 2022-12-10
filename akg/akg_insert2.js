@@ -1,6 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
+/*アルバムデータの挿入*/
+
 let sqls = [
   `insert into album ("name","releaseday","quantity") values ("君繋ファイブエム","2003年11月19日","12曲");`,
   

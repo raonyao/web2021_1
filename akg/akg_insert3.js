@@ -1,6 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
+/*シングルデータの挿入*/
+
 let sqls = [
   `insert into single ("name","releaseday","quantity") values ("未来の破片","2003年8月6日","3曲");`,
 
