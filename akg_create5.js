@@ -1,13 +1,15 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
-/*タイアップ（オファー）テーブル（ID、タイアップ名）*/
+/*曲テーブル（ID、曲名、アルバムID、シングルID、タイアップID）*/
 
 let schema = `
-create table offer(
+create table song(
   id integer primary key,
   name text,
-  songtitle text
+  album_id integer,
+  single_id integer,
+  offer_id integer
 );
 `
 
