@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Show message</title>
+</head>
+<body>
+  <h2>タイアップ一覧</h2>
+  <table border="1">
+    <tr>
+      <th>ID </th>
+      <th>作品詳細　</th>
+    </tr>
+      <% for( let row of data ) { %>
+        <tr>
+            <td><%= row.id%></td>
+            <td><%= row.name %></td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>

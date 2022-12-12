@@ -1,0 +1,28 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Show message</title>
+</head>
+<body>
+  <h2>メンバープロフィール</h2>
+  <table border="1">
+    <tr>
+      <th>ID </th>
+      <th>名前　</th>
+      <th>誕生日　</th>
+      <th>血液型　</th>
+      <th>楽器　</th>
+    </tr>
+      <% for( let row of data ) { %>
+        <tr>
+            <td><%= row.id%></td>
+            <td><%= row.name %></td>
+            <td><%= row.birthday %></td>
+            <td><%= row.bloodtype %></td>
+            <td><%= row.instrument %></td>
+        </tr>
+      <% } %>
+  </table>
+</body>
+</html>

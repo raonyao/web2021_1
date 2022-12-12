@@ -12,38 +12,91 @@ app.get("/", (req, res) => {
   res.render('akg', {mes:message});
 });
 
-app.get("/monster", (req, res) => {
+app.get("/akg/member", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, name from monster;";
+    let sql = "select id, name,birthday, bloodtype,instrument from member;";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
-                res.render('MH', {mes:"エラーです"});
+                res.render('akg', {mes:"エラーです"});
             }
             //console.log(data);    // ③
-            res.render('select', {data:data});
+            res.render('akg_select1', {data:data});
         })
     })
 })
-app.get("/monster/:id", (req, res) => {
+
+app.get("/akg/album", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select stripping.name as strippingname, dropratio from monster inner join stripping on stripping.monster_id=monster.id where monster.id=" + req.params.id + ";";
+    let sql = "select id, name, releaseday, quantity from album;";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
-                res.render('MH', {mes:"エラーです"});
+                res.render('akg', {mes:"エラーです"});
             }
             console.log(data);    // ③
-            res.render('select2', {data:data});
+            res.render('akg_select2', {data:data});
         })
     })
 })
+
+app.get("/akg/single", (req, res) => {
+    //console.log(req.query.pop);    // ①
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+    let sql = "select id, name, releaseday, quantity from single;";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('akg', {mes:"エラーです"});
+            }
+            console.log(data);    // ③
+            res.render('akg_select3', {data:data});
+        })
+    })
+})
+
+app.get("/akg/song", (req, res) => {
+    //console.log(req.query.pop);    // ①
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+    let sql = "select id, name from song;";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('akg', {mes:"エラーです"});
+            }
+            console.log(data);    // ③
+            res.render('akg_select4', {data:data});
+        })
+    })
+})
+
+app.get("/akg/offer", (req, res) => {
+    //console.log(req.query.pop);    // ①
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+    let sql = "select id, name from offer;";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('akg', {mes:"エラーです"});
+            }
+            console.log(data);    // ③
+            res.render('akg_select5', {data:data});
+        })
+    })
+})
+
 app.get("/monster/:id", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
@@ -60,6 +113,7 @@ app.get("/monster/:id", (req, res) => {
         })
     })
 })
+
 app.use(function(req, res, next) {
   res.status(404).send('ページが見つかりません');
 });
