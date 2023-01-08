@@ -1,15 +1,13 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('test4.db');
 
-/*紐づけのためのテーブル（song_id、single_id、album_id、offer_id）*/
+/*アルバムテーブルとリンクテーブルを紐づけたVIEWテーブル*/
 
 let schema = `
-create table link(
-  song_id integer,
-  single_id integer,
-  album_id integer,
-  offer_id integer
-);
+create view album_link1(
+  id, album_name, song_id, single_id, offer_id
+)
+as select album.id, album.name, song_id, single_id, offer_id from album inner join link on album.id = link.album_id;
 `
 
 db.serialize( () => {

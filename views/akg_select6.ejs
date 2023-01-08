@@ -5,18 +5,15 @@
   <title>Show message</title>
 </head>
 <body>
-  <h2>曲一覧</h2>
+  <h2>アルバム収録曲</h2>
   <table border="1">
     <tr>
-      <th>ID </th>
       <th>曲名　</th>
-    </tr>
+    </tr> 
       <% for( let row of data ) { %>
         <tr>
-            <td><a href="/akg/album_detail2/<%=row.id%>"><%= row.id%></a></td>
             <td><%= row.name %></td>
         </tr>
       <% } %>
-  </table>
 </body>
 </html>

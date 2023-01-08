@@ -5,12 +5,12 @@
   <title>入力ページ</title>
 </head>
 <body>
-  <form action="/akg/album">
+  <h2>アルバム名検索</h2>
+  <form action="/akg/album/search1">
+    <p>アルバム名：<input type="text" name="name" id="name"></p>
     <input type="checkbox" name="desc" id="desc">
     <label for="desc">大きい順</label>
-    <input type="number" name="pop" id="pop">
-    <label for="pop">表示数</label>
-    <input type="submit" value="送信">
+    <input type="submit" value="検索">
   </form>
 </body>
 </html>

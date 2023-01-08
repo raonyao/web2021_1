@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -12,6 +11,16 @@ width: 100%;
 .title{
   color: #000000;
   text-align:center;
+}
+.flex{
+  display: flex;
+  border: 1px;
+}
+.left{
+  width: 50%;
+}
+.right{
+  width: 50%;
 }
   
 ul.ddmenu {
@@ -50,19 +59,30 @@ display: block; /* ★5:マウスポインタが載っている項目の内部�
 
 <body>
 <div class="bigbox">
+  
   <div class="title">
     <h1>ASIAN KUNG-FU GENERATION</h1>
   </div>
-	<ul class="ddmenu">
-   	<li><a href="/">ホーム</a></li>
-    <li><a href="/akg/member">メンバー</a></li>
-   	<li><a href="/akg/album">アルバム</a></li>
-   	<li><a href="/akg/single">シングル</a></li>
-    <li><a href="/akg/song">曲</a></li> 
-	  <li><a href="/akg/offer">タイアップ</a></li>
-    <li><a href="/public/akg_search.html">検索</a></li>
-     
-	</ul>
+  
+  <div>
+	  <ul class="ddmenu">
+     	<li><a href="/">ホーム</a></li>
+      <li><a href="/akg/member">メンバー</a></li>
+     	<li><a href="/akg/album">アルバム</a></li>
+     	<li><a href="/akg/single">シングル</a></li>
+      <li><a href="/akg/song">曲</a></li> 
+	    <li><a href="/akg/offer">タイアップ</a></li>
+      <li><a href="/public/akg_search.html">検索</a></li>
+	  </ul>
+  </div>
+
+  <div class="flex">
+    <div class="left">
+      <img src="surf.jpg">
+    </div>
+    
+
 </div>
+  
 </body>
 </html>
