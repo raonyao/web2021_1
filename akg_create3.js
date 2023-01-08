@@ -1,12 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test2.db');
+const db = new sqlite3.Database('test1.db');
+
+/*シングルーブル（ID、シングル名、発売日（リリース日）、曲数）*/
 
 let schema = `
-create table capture(
+create table single(
   id integer primary key,
-  name text,
-  dropratio text,
-  monster_id integer
+  name varchar,
+  releaseday varchar,
+  quantity varchar
 );
 `
 

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test4.db');
+const db = new sqlite3.Database('test1.db');
 
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   res.render('akg', {mes:message});
 });
 
-app.get("/akg/member", (req, res) => {
+app.get("/member", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
@@ -29,11 +29,11 @@ app.get("/akg/member", (req, res) => {
     })
 })
 
-app.get("/akg/album", (req, res) => {
+app.get("/album", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, name, releaseday, quantity from album  order by id" + desc + ";";
+    let sql = "select id, name, releaseday, quantity from album order by releaseday" + desc + ";";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -46,25 +46,7 @@ app.get("/akg/album", (req, res) => {
     })
 })
 
-app.get("/akg_search", (req, res) => {
-    console.log(req.query.name);    
-    let desc = "";
-    if( req.query.desc ) desc = " desc";
-    if( req.query.name ) name = " req.query.name";
-    let sql = "select id, name, releaseday, quantity from album where name= " + name + "order by id" + desc + ";";
-    //console.log(sql);    // ②
-    db.serialize( () => {
-        db.all(sql, (error, data) => {
-            if( error ) {
-                res.render('akg', {mes:"エラーです.."});
-            }
-            console.log(data);    // ③
-            res.render('akg_select2', {data:data});
-        })
-    })
-})
-
-app.get("/akg/single", (req, res) => {
+app.get("/single", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
@@ -81,11 +63,11 @@ app.get("/akg/single", (req, res) => {
     })
 })
 
-app.get("/akg/song", (req, res) => {
+app.get("/songs", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, name from song;";
+    let sql = "select id, name from songs2;";
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -98,11 +80,28 @@ app.get("/akg/song", (req, res) => {
     })
 })
 
-app.get("/akg/offer", (req, res) => {
+app.get("/akg_search", (req, res) => {
+    console.log(req.query.name);    
+    let desc = "";
+    if( req.query.name ) name = " req.query.name";
+    let sql = "select id, name, releaseday, quantity from album where name = " + name + "order by id" + desc + ";";
+    //console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('akg', {mes:"エラーです.."});
+            }
+            console.log(data);    // ③
+            res.render('akg_select2', {data:data});
+        })
+    })
+})
+
+app.get("/album/:id", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select id, name from offer;";
+    let sql = "select name from songs2 where album_id=" + req.params.id + ";"
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -115,11 +114,11 @@ app.get("/akg/offer", (req, res) => {
     })
 })
 
-app.get("/akg/album_detail/:id", (req, res) => {
+app.get("/single/:id", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select song.name as songname, single.name as singlename, offer.name as offername from link join album on link.album_id = album.id join song on link.song_id = song.id join single on link.single_id = single.id join offer on link.offer_id = offer.id where link.album_id=" + req.params.id + ";";
+    let sql = "select name from songs2 where single_id=" + req.params.id + ";"
     //console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
@@ -127,47 +126,80 @@ app.get("/akg/album_detail/:id", (req, res) => {
                 res.render('akg', {mes:"エラーです....."});
             }
             console.log(data);    // ③
-            res.render('akg_select6', {data:data});
+            res.render('akg_select5', {data:data});
         })
     })
 })
 
-app.get("/akg/album_detail2/:id", (req, res) => {
+app.get("/album_add", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select name, from song inner join album_link1 on song.id = album_link1.song_id where album_link1.id=" + req.params.id + ";";
-    //console.log(sql);    // ②
+     let sql ="insert into album (name, releaseday, quantity) values (" + `"` + req.query.name + `"` + "," + `"`+ req.query.day + `"` + "," + `"` + req.query.quantity + `"` + ");"
+    console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
-                res.render('akg', {mes:"エラーです....."});
+                res.render('show', {mes:"エラーです"});
             }
             console.log(data);    // ③
-            res.render('akg_select6', {data:data});
+            res.render('akg', {data:data});
         })
     })
 })
 
-app.get("/monster/:id", (req, res) => {
+app.get("/album_del", (req, res) => {
     //console.log(req.query.pop);    // ①
     let desc = "";
     if( req.query.desc ) desc = " desc";
-    let sql = "select lostitem.name as lostitemname, dropratio from monster inner join lostitem on lostitem.monster_id=monster.id where monster.id=" + req.params.id + ";";
-    //console.log(sql);    // ②
+     let sql ="delete from album where id=" + req.query.id + ";"
+   // console.log(sql);    // ②
     db.serialize( () => {
         db.all(sql, (error, data) => {
             if( error ) {
-                res.render('MH', {mes:"エラーです"});
+                res.render('show', {mes:"エラーです"});
             }
             console.log(data);    // ③
-            res.render('select2', {data:data});
+            res.render('akg', {data:data});
+        })
+    })
+})
+
+app.get("/songs2_add", (req, res) => {
+    //console.log(req.query.pop);    // ①
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+     let sql ="insert into songs2 (name, album_id) values (" + `"` + req.query.name + `"` + "," + req.query.aid + ");"
+    console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            console.log(data);    // ③
+            res.render('akg', {data:data});
+        })
+    })
+})
+app.get("/songs_del", (req, res) => {
+    //console.log(req.query.pop);    // ①
+    let desc = "";
+    if( req.query.desc ) desc = " desc";
+     let sql ="delete from songs2 where id=" + req.query.id + ";"
+   // console.log(sql);    // ②
+    db.serialize( () => {
+        db.all(sql, (error, data) => {
+            if( error ) {
+                res.render('show', {mes:"エラーです"});
+            }
+            console.log(data);    // ③
+            res.render('akg', {data:data});
         })
     })
 })
 
 app.use(function(req, res, next) {
-  res.status(404).send('ページが見つかりません.......');
+  res.status(404).send('ページが見つかりません');
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));

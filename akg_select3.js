@@ -1,8 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test4.db');
+const db = new sqlite3.Database('test1.db');
 
 let sql = `
-select id, name from offer;
+select id, name from single;
 `
 
 db.serialize( () => {

@@ -13,10 +13,18 @@
     </tr>
       <% for( let row of data ) { %>
         <tr>
-            <td><a href="/akg/album_detail2/<%=row.id%>"><%= row.id%></a></td>
+            <td><%= row.id%></td>
             <td><%= row.name %></td>
         </tr>
       <% } %>
   </table>
+  <form action="/">
+  <input type="submit" value="戻る"></form>
+
+  <h1>曲削除</h1>
+    <form action="/songs_del">
+     <p>ID       ：<input type="text" name="id" id="id"></p>
+    <input type="submit" value="削除">
+  </form>
 </body>
 </html>

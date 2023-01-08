@@ -1,10 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test2.db');
+const db = new sqlite3.Database('test1.db');
+
+/*曲テーブル（ID、曲名）*/
 
 let schema = `
-create table monster(
+create table songs2(
   id integer primary key,
-  name text
+  name varchar,
+  album_id inreger,
+  single_id integer
 );
 `
 

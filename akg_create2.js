@@ -1,14 +1,14 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test4.db');
+const db = new sqlite3.Database('test1.db');
 
-/*紐づけのためのテーブル（song_id、single_id、album_id、offer_id）*/
+/*アルバムテーブル（ID、アルバム名、発売日（リリース日）、曲数）*/
 
 let schema = `
-create table link(
-  song_id integer,
-  single_id integer,
-  album_id integer,
-  offer_id integer
+create table album(
+  id integer primary key,
+  name varchar,
+  releaseday varchar,
+  quantity varchar
 );
 `
 

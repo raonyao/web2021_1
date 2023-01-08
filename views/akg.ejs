@@ -12,15 +12,12 @@ width: 100%;
   color: #000000;
   text-align:center;
 }
-.flex{
-  display: flex;
-  border: 1px;
+.comment{
+  text-align: center;
 }
-.left{
-  width: 50%;
-}
-.right{
-  width: 50%;
+.slide{
+  width: 45%;
+  margin: 0 auto;
 }
   
 ul.ddmenu {
@@ -52,7 +49,18 @@ ul.ddmenu li:hover ul {
 display: block; /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
 }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
+<script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                pause: 5000,
+            });
+        });
+</script>
 </head>
 
 <!-- 実際には#にURLを記述 -->
@@ -63,26 +71,44 @@ display: block; /* ★5:マウスポインタが載っている項目の内部�
   <div class="title">
     <h1>ASIAN KUNG-FU GENERATION</h1>
   </div>
-  
+
   <div>
 	  <ul class="ddmenu">
      	<li><a href="/">ホーム</a></li>
-      <li><a href="/akg/member">メンバー</a></li>
-     	<li><a href="/akg/album">アルバム</a></li>
-     	<li><a href="/akg/single">シングル</a></li>
-      <li><a href="/akg/song">曲</a></li> 
-	    <li><a href="/akg/offer">タイアップ</a></li>
+      <li><a href="/member">メンバー</a></li>
+     	<li><a href="/album">アルバム</a></li>
+     	<li><a href="/single">シングル</a></li>
+      <li><a href="/songs">曲</a></li> 
       <li><a href="/public/akg_search.html">検索</a></li>
 	  </ul>
   </div>
 
-  <div class="flex">
-    <div class="left">
-      <img src="surf.jpg">
-    </div>
-    
+  <div class="slide">
+  <div class="slider">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/All%20right%20part2.jpg?raw=true"      width="500" height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/BEST%20HIT%20AKG2.jpg?raw=true"        width="500" height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/Droro.jpg?raw=true" width="500"        height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/surf.jpg?raw=true" width="500"         height="500" alt="">
+    <img   
+src="https://github.com/raonyao0623/web2021_1/blob/main/%E3%82%BD%E3%83%AB%E3%83%95%E3%82%A1.jpg?raw=true" width="500" height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/%E3%83%95%E3%82%A3%E3%83%BC%E3%83%89%E3%83%90%E3%83%83%E3%82%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB2.jpg?raw=true" width="500" height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF.jpg?raw=true" width="500" height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/%E5%90%9B%E3%81%A8%E3%81%84%E3%81%86%E8%8A%B1.jpg?raw=true" width="500" height="500" alt="">
+    <img src="https://github.com/raonyao0623/web2021_1/blob/main/%E8%97%A4%E6%B2%A2%E3%83%AB%E3%83%BC%E3%82%B6%E3%83%BC.jpg?raw=true" width="500" height="500" alt="">
+  </div>
+  </div>
+  <div class="comment">
+    <h2>ASIAN KUNG-FU GENERATIONとは日本のロックバンドである。<br>
+      メンバーは
+      後藤正文 （ボーカル、ギター）<br>
+      喜多建介 （ギター、ボーカル）<br>
+      山田貴洋 （ベース、ボーカル）<br>
+      伊地知潔 （ドラムス）
+      の4人。<br>
 
-</div>
-  
+関東学院大学の軽音サークルで結成され、<br>2003年に「遥か彼方」などを収録したミニアルバム「崩壊アンプリファー」で<br>メジャーデビューを果たす。<br>
+
+その後、「リライト」の大ヒット、<br>2ndフルアルバム「ソルファ」のオリコン1位等をキッカケに人気バンドの仲間入りを果たした。</h2>
+  </div>
 </body>
 </html>

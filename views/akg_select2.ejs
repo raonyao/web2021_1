@@ -3,24 +3,79 @@
 <head>
   <meta charset="utf-8">
   <title>Show message</title>
+  <style type="text/css">
+  .flex{
+    display: flex;
+  }
+  .left{
+    padding: 30px;
+  }
+  .mid{
+    padding: 30px;
+  }
+  .right{
+    padding: 30px;
+  }
+  </style>
 </head>
 <body>
-  <h2>アルバム一覧</h2>
-  <table border="1">
-    <tr>
-      <th>ID </th>
-      <th>アルバム名　</th>
-      <th>リリース日　</th>
-      <th>曲数　</th>
-    </tr>
-      <% for( let row of data ) { %>
+  <div class="flex">
+    <div class="left">
+      <h2>アルバム一覧</h2>
+       <form action="/album">
+       <input type="checkbox" name="desc" id="desc">
+       <label for="desc">降順</label>
+       <input type="submit" value="送信">
+     </form>
+     <table border="1">
         <tr>
-            <td><a href="/akg/album_detail/<%=row.id%>"><%= row.id%></a</td>
-            <td><%= row.name %></td>
-            <td><%= row.releaseday %></td>
-            <td><%= row.quantity %></td>
-        </tr>
-      <% } %>
-  </table>
+          <th>ID </th>
+          <th>アルバム名　</th>
+          <th>リリース日　</th>
+         <th>曲数　</th>
+       </tr>
+          <% for( let row of data ) { %>
+            <tr>
+               <td><a href="/album/<%=row.id%>"><%= row.id%></a</td>
+                <td><%= row.name %></td>
+               <td><%= row.releaseday %></td>
+                <td><%= row.quantity %></td>
+           </tr>
+         <% } %>
+      </table>
+    
+      <form action="/">
+      <input type="submit" value="戻る"></form>
+     </div>  
+           
+     <div class="mid">      
+      <h1>  アルバム名追加  </h1>
+       <form action="/album_add">
+       <p>アルバム名：<input type="text" name="name" id="name"></p>
+       <p>リリース日：<input type="text" name="day" id="day"></p>
+       <p>曲数　　　：<input type="text" name="quantity" id="quantity"></p>
+       <input type="submit" value="追加"></form>
+        
+       <h1>アルバム削除</h1>
+       <form action="/album_del">
+       <p>ID       ：<input type="text" name="id" id="id"></p>
+       <input type="submit" value="削除">
+       </form>
+    </div>
+           
+    <div class="right">
+      <h1>曲名追加</h1>
+       <form action="/songs2_add">
+       <p>曲名：<input type="text" name="name" id="name"></p>
+       <label for="songs2">アルバム名</label>
+       <select name="aid">
+        <option value="">選択してください</option>
+        <% for( let row of data ) { %>
+        <option value="<%=row.id%>"><%= row.name %></option>
+        <% } %>
+      </select>
+      <br>
+      <input type="submit" value="追加"></form>
+    </div>
 </body>
 </html>

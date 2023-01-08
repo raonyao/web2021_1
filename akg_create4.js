@@ -1,12 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('test4.db');
+const db = new sqlite3.Database('test1.db');
 
 /*曲テーブル（ID、曲名）*/
 
 let schema = `
-create table song(
+create table songs(
   id integer primary key,
-  name text
+  name varchar
 );
 `
 
